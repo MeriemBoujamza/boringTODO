@@ -1,0 +1,21 @@
+{% extends 'list_app/base.html' %}
+{% load crispy_forms_tags %}
+{%block content%}
+        <div class="d-flex flex-column p-4 body">
+        <h1>MY TO DO LIST</h1>
+        <h6>Welcome {{ user.username}} ! you can add new tasks and delete old ones with one click </h6>
+        <form method = "POST" >
+            {% csrf_token %}
+            <div class=" d-inline-flex">
+                 {{ form.title }}
+                <button class="w-100 p-2  btn btn-dark" type="submit">Add</button>
+
+            </div>
+        </form>
+        <ul class="list-group list-group-mine">
+            {% for task in tasks %}        
+            <li class="list-group-item list-group-item-mine">- {{task.title}} <a class="mybutton" href="{% url 'task-delete' task.id %}" role="button"><i class="fa fa-fw fa-trash fa-xs" aria-hidden="true"></i></a></li>
+            {% endfor %}
+        </ul>
+        </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'list_app/base.html' %}
+
+{%block content%}
+        <div class="d-flex  flex-column justify-content-center align-items-center p-4 body">
+            <div>
+            <img src="{{ owner.profile.profile_pic.url }}" alt="profile_pic" class="card" width="150" height="150">
+            </div>
+            <h1>{{owner.username}}</h1>
+            <h1>{{owner.email}}</h1>
+
+        </div>
+{% endblock %}
